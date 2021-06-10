@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<div class="classcontainer">
+    <table class="table table-hover table-dark" >
+        <thead>
+        <tr>
+            <th data-field="id">Employee Id</th>
+            <th data-field="firstName">First name</th>
+            <th data-field="lastName">Last name</th>
+
+            <th data-field="Edit">Edit Employee</th>
+            <th data-field="Delete">Delete Employee</th>
+
+        </tr>
+        <tr th:each="employee : ${allEmployees}">
+            <td th:text="${employee.getId()}" style="text-align:center"></td>
+            <td th:text="${employee.getFirstName()}" style="text-align:center"></td>
+            <td th:text="${employee.getLastName()}" style="text-align:center"></td>
+            <td style="text-align:center">
+                <a th:href="@{editEmployeePage/{id}(id=${employee.getId()})}"><span class="material-icons">edit</span></a>
+                <a th:href="@{removeEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">delete</span></a>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

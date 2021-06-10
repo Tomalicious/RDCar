@@ -1,0 +1,82 @@
+.pill-nav a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+/* Change the color of links on mouse-over */
+.pill-nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.pill-nav a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+body {
+    background-image: url("cars-(backdrop2006).jpg");
+    background-size: cover;
+}
+h1 {
+    color: white;
+    margin-left: 14%;
+    font-size: xxx-large;
+    border: 150px;
+    position: center;
+    top: 150px;
+    padding-top: 80px;
+    left: 200px;
+    font-family: "Gill Sans MT";
+    letter-spacing: 0.2em;
+
+}
+.contactcontainer{
+    color: white;
+    margin-top: 10%;
+}
+#submitbnt {
+    font-family: inherit;
+    text-decoration: none;
+}
+#submitbnt a{
+    color: white;
+    text-decoration: none;
+}
+
+#submitbnt a:hover{
+    color: white;
+    text-decoration: none;
+
+}
+#submitbnt a:active{
+    color: white;
+    text-decoration: none;
+}
+#submitbnt a:visited{
+    color: white;
+    text-decoration: none;
+}
+.text{
+    margin-top: 10%;
+    font-family: "Gill Sans MT";
+    text-align: center;
+    font-size: small;
+}
+.content{
+    max-width: 750px;
+    margin: auto;
+}
+
+.my-element {
+    margin: 0 0.5rem;
+
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+}
+
