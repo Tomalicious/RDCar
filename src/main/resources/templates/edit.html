@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<form method="post" th:action="@{/edit/{id}(id=${editEmployee.id})}" style="margin-top: 20px">
+    <div>
+        <div class="row">
+        <div class="col-md-4 form-row" >
+            <label for="animalName" class="form-label">Name of the animal</label>
+            <input th:value="${editEmployee.firstName}" id="animalName" class="form-control" placeholder="First name" name="firstName">
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 form-row">
+            <label for="lastName" class="form-label">Country</label>
+            <input th:value="${editEmployee.lastName}" id="lastName" class="form-control" placeholder="Last Name" name="lastName">
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 form-row">
+            <label for="age" class="form-label">Country</label>
+            <input th:value="${editEmployee.age}" id="age" class="form-control" placeholder="Age" name="age">
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 form-row">
+            <label for="hiredate" class="form-label">Country</label>
+            <input th:value="${editEmployee.hireDate}" id="hiredate" class="form-control" placeholder="Hire Date" name="hireDate">
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 form-row">
+            <label for="functionlevel" class="form-label">Function Level</label>
+            <input th:value="${editEmployee.functionLevel}" id="functionlevel" class="form-control" placeholder="Function Level" name="functionLevel">
+        </div>
+        </div>
+
+    </div>
+
+
+    <!--    <div class="row">-->
+    <!--        <div class="col m6">-->
+    <!--            <label for="age" class="form-label">Age</label>-->
+    <!--            <input class="form-control" id="age"-->
+    <!--                   placeholder="Age" name="age">-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div class="row">
+        <div class="col-md-4">
+            <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

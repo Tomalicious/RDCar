@@ -16,7 +16,7 @@
 
 /* Add a color to the active/current link */
 .pill-nav a.active {
-    background-color: dodgerblue;
+    background-color: #212529;
     color: white;
 }
 body {
@@ -78,5 +78,12 @@ h1 {
 
     animation: bounce; /* referring directly to the animation's @keyframe declaration */
     animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+button{
+    background-color: #212529;
+    margin-top: 5px;
+
+
 }
 

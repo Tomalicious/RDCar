@@ -16,6 +16,7 @@ import java.io.Serializable;
 public class Car implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String category;

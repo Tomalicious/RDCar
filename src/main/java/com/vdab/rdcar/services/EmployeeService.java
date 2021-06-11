@@ -15,4 +15,20 @@ public class EmployeeService {
     public List<Employee> getEmployees() {
         return employeeRepository.getEmployees();
     }
+
+    public void removeById(Long id) {
+        employeeRepository.removeById(id);
+    }
+
+    public Employee findById(Long id) {
+        return employeeRepository.findById(id);
+    }
+
+    public void updateEmployee(Employee employee) {
+
+    }
+
+    public void addEmployee(Employee newEmployee) {
+       employeeRepository.addEmployee(newEmployee);
+    }
 }

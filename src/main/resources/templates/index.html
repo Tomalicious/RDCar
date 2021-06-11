@@ -5,24 +5,33 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
-<div class="classcontainer">
+<div class="classcontainer col-md-8 offset-2">
     <table class="table table-hover table-dark" >
         <thead>
         <tr>
-            <th data-field="id">Employee Id</th>
-            <th data-field="firstName">First name</th>
-            <th data-field="lastName">Last name</th>
+            <th data-field="id" style="text-align:center" >Employee Id</th>
+            <th data-field="firstName" style="text-align:center">First name</th>
+            <th data-field="lastName" style="text-align:center">Last name</th>
+            <th data-field="lastName" style="text-align:center">Age</th>
+            <th data-field="lastName" style="text-align:center">Hire Date</th>
+            <th data-field="lastName" style="text-align:center">Function level</th>
 
-            <th data-field="Edit">Edit Employee</th>
-            <th data-field="Delete">Delete Employee</th>
+            <th data-field="Edit" style="text-align:center">Edit Employee</th>
+            <th data-field="Delete" style="text-align:center">Delete Employee</th>
 
         </tr>
         <tr th:each="employee : ${allEmployees}">
             <td th:text="${employee.getId()}" style="text-align:center"></td>
             <td th:text="${employee.getFirstName()}" style="text-align:center"></td>
             <td th:text="${employee.getLastName()}" style="text-align:center"></td>
+            <td th:text="${employee.getAge()}" style="text-align:center"></td>
+            <td th:text="${employee.getHireDate()}" style="text-align:center"></td>
+            <td th:text="${employee.getFunctionLevel()}" style="text-align:center"></td>
+
             <td style="text-align:center">
-                <a th:href="@{editEmployeePage/{id}(id=${employee.getId()})}"><span class="material-icons">edit</span></a>
+                <a th:href="@{editEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">edit</span></a>
+            </td>
+            <td style="text-align:center">
                 <a th:href="@{removeEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">delete</span></a>
             </td>
         </tr>
