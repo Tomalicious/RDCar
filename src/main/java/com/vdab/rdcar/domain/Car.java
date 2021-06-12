@@ -19,9 +19,44 @@ public class Car implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String category;
+    private String aCategory;
 
-    private String currentCar;
+    private String bCo2;
+
+    private String cBrand;
+
+    private String dModel;
+
+    private String ePack;
+
+    private String fFuel;
+
+    private String gFuelTank;
+
+    private String hTowingBracket;
+
+    private String iTypeRim;
+
+    private String jMaxKmYear;
+
+    private String kIdealKm;
+
+    private String lMaxKm;
+
+    private String mListPrice;
+
+    private String nBenefitMonth;
+
+    private String oUpgradeAmount;
+
+    private String pDowngradeAmount;
+
+
+
+
+
+
+
 
 
 }

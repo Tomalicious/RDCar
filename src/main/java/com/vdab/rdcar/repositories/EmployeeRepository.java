@@ -39,4 +39,9 @@ public class EmployeeRepository {
     public void addEmployee(Employee employee) {
         entityManager.persist(employee);
     }
+
+    @Transactional
+    public void updateEmployee(Employee employee) {
+        entityManager.merge(employee);
+    }
 }

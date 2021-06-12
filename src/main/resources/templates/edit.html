@@ -10,8 +10,8 @@
     <div>
         <div class="row">
         <div class="col-md-4 form-row" >
-            <label for="animalName" class="form-label">Name of the animal</label>
-            <input th:value="${editEmployee.firstName}" id="animalName" class="form-control" placeholder="First name" name="firstName">
+            <label for="firstName" class="form-label">Name of the animal</label>
+            <input th:value="${editEmployee.firstName}" id="firstName" class="form-control" placeholder="First name" name="firstName">
         </div>
         </div>
         <div class="row">
@@ -34,22 +34,13 @@
         </div>
         <div class="row">
         <div class="col-md-4 form-row">
-            <label for="functionlevel" class="form-label">Function Level</label>
-            <input th:value="${editEmployee.functionLevel}" id="functionlevel" class="form-control" placeholder="Function Level" name="functionLevel">
+            <label for="functionLevel" class="form-label" >Function Level</label>
+            <select class="form-control" name="functionLevel" id="functionLevel">
+                <option th:each="function :${functionLevels}" th:text="${function.getName()}"></option>
+            </select>
         </div>
         </div>
-
     </div>
-
-
-    <!--    <div class="row">-->
-    <!--        <div class="col m6">-->
-    <!--            <label for="age" class="form-label">Age</label>-->
-    <!--            <input class="form-control" id="age"-->
-    <!--                   placeholder="Age" name="age">-->
-    <!--        </div>-->
-    <!--    </div>-->
-
     <div class="row">
         <div class="col-md-4">
             <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
