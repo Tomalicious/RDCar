@@ -83,7 +83,8 @@ h1 {
 button{
     background-color: #212529;
     margin-top: 5px;
-
-
 }
 
+label{
+    color: #dddddd;
+}

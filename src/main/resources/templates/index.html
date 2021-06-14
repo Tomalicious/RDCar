@@ -29,7 +29,7 @@
             <td th:text="${employee.getFunctionLevel()}" style="text-align:center"></td>
 
             <td style="text-align:center">
-                <a th:href="@{editEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">edit</span></a>
+                <a th:href="@{editEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">manage_accounts</span></a>
             </td>
             <td style="text-align:center">
                 <a th:href="@{removeEmployee/{id}(id=${employee.getId()})}"><span class="material-icons">delete</span></a>
