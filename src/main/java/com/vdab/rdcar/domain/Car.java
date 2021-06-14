@@ -51,14 +51,6 @@ public class Car implements Serializable {
 
     private String pDowngradeAmount;
 
-
-
-
-
-
-
-
-
 }
 
 
