@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
+@Table(name = "employee")
 public class Employee implements Serializable {
 
     @Id
@@ -29,11 +31,7 @@ public class Employee implements Serializable {
 
     private String lastName;
 
-    @ManyToOne
-    private Car car;
-
     private Integer age;
-
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
@@ -41,7 +39,12 @@ public class Employee implements Serializable {
 
     private Integer functionLevel;
 
-    @ManyToMany
-    private List<Car> historyCars;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_car_history",
+            joinColumns = {@JoinColumn(name = "employee_id")},
+            inverseJoinColumns = {@JoinColumn(name = "car_id")
+            })
+    private List<Car> historyCars = new ArrayList<>();
 
 }

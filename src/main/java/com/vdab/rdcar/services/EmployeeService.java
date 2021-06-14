@@ -32,4 +32,9 @@ public class EmployeeService {
     public void addEmployee(Employee newEmployee) {
        employeeRepository.addEmployee(newEmployee);
     }
+
+    public void addCarToHistory(Long id , Long carId) {
+        employeeRepository.addCarToHistory(id , carId);
+    }
+
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<div class="classcontainer col-md-8 offset-2">
+    <table class="table table-hover table-dark" >
+        <thead>
+        <tr>
+            <th data-field="id" style="text-align:center" >Category</th>
+            <th data-field="firstName" style="text-align:center">Brand</th>
+            <th data-field="lastName" style="text-align:center">Model</th>
+            <th data-field="lastName" style="text-align:center">Fuel</th>
+            <th data-field="lastName" style="text-align:center">List Price</th>
+            <th data-field="" style="text-align:center">Add to history</th>
+
+        </tr>
+        <tr th:each="car : ${allCars}">
+            <td th:text="${car.getACategory()}" style="text-align:center"></td>
+            <td th:text="${car.getCBrand()}" style="text-align:center"></td>
+            <td th:text="${car.getDModel()}" style="text-align:center"></td>
+            <td th:text="${car.getFFuel()}" style="text-align:center"></td>
+            <td th:text="${car.getMListPrice()}" style="text-align:center"></td>
+            <td style="text-align:center">
+                <a th:href="@{/addingToHistory/{id}/{carId} (id = ${chosenEmployee.getId()} , carId = ${car.getId})}">
+                    <span class="material-icons">directions_car_filled</span></a>
+            </td>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

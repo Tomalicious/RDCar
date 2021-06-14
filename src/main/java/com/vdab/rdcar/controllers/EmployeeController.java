@@ -40,7 +40,7 @@ public class EmployeeController {
     }
 
     @PostMapping(value = "/edit/{id}")
-    public String editTiger(@ModelAttribute Employee employee){
+    public String editEmployee(@ModelAttribute Employee employee){
         employeeService.updateEmployee(employee);
         return "redirect:/";
     }

@@ -1,18 +1,20 @@
 package com.vdab.rdcar.repositories;
 
 
+import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
 public class EmployeeRepository {
+
+    @Autowired
+    private CarRepository carRepository;
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -43,5 +45,15 @@ public class EmployeeRepository {
     @Transactional
     public void updateEmployee(Employee employee) {
         entityManager.merge(employee);
+    }
+
+    @Transactional
+    public void addCarToHistory(Long id, Long carId) {
+        Employee employee = findById(id);
+        List<Car> carList = employee.getHistoryCars();
+        carList.add(carRepository.findById(carId));
+        employee.setHistoryCars(carList);
+        entityManager.merge(employee);
+
     }
 }
