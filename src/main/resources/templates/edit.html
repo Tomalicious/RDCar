@@ -9,46 +9,48 @@
 <form method="post" th:action="@{/edit/{id}(id=${editEmployee.id})}" style="margin-top: 20px">
     <div>
         <div class="row">
-        <div class="col-md-4 form-row" >
-            <label for="firstName" class="form-label">Name of the animal</label>
+        <div class="col-md-4 form-row offset-md-2" >
+            <label for="firstName" class="form-label">First Name</label>
             <input th:value="${editEmployee.firstName}" id="firstName" class="form-control" placeholder="First name" name="firstName">
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
-            <label for="lastName" class="form-label">Country</label>
+        <div class="col-md-4 form-row offset-md-2">
+            <label for="lastName" class="form-label">Last Name</label>
             <input th:value="${editEmployee.lastName}" id="lastName" class="form-control" placeholder="Last Name" name="lastName">
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
-            <label for="age" class="form-label">Country</label>
+        <div class="col-md-4 form-row offset-md-2">
+            <label for="age" class="form-label">Age</label>
             <input th:value="${editEmployee.age}" id="age" class="form-control" placeholder="Age" name="age">
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
-            <label for="hiredate" class="form-label">Country</label>
+        <div class="col-md-4 form-row offset-md-2">
+            <label for="hiredate" class="form-label">Hire Date</label>
             <input th:value="${editEmployee.hireDate}" id="hiredate" class="form-control" placeholder="Hire Date" name="hireDate">
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="functionLevel" class="form-label" >Function Level</label>
             <select class="form-control" name="functionLevel" id="functionLevel">
                 <option th:each="function :${functionLevels}" th:text="${function.getName()}"></option>
             </select>
         </div>
         </div>
-        <div class="col-md-4 form-row">
+        <div class="row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="currentCar" class="form-label" >Current Car</label>
             <select class="form-control" name="currentCar" id="currentCar">
                 <option th:each="history :${historyList}" th:text="${history.getDModel()}" th:value="${history}"></option>
             </select>
         </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 offset-md-2">
             <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
         </div>
     </div>

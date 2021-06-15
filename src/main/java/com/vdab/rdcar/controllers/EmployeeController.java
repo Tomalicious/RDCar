@@ -39,8 +39,6 @@ public class EmployeeController {
         model.addAttribute("historyList" , historyList);
         model.addAttribute("editEmployee",employeeService.findById(id));
         model.addAttribute("functionLevels" ,  FunctionLevels.values());
-        model.addAttribute("newEmployee" ,  Employee newEmployee = new Employee();
-
         return "edit";
     }
 
