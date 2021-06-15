@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -39,8 +37,6 @@ public class EmployeeController {
         model.addAttribute("historyList" , historyList);
         model.addAttribute("editEmployee",employeeService.findById(id));
         model.addAttribute("functionLevels" ,  FunctionLevels.values());
-        model.addAttribute("newEmployee" ,  Employee newEmployee = new Employee();
-
         return "edit";
     }
 

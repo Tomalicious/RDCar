@@ -9,31 +9,31 @@
 <form method="post"  th:action="@{/add}" th:object="${newEmployee}" style="margin-top: 20px">
     <div>
         <div class="row">
-        <div class="col-md-4 form-row" >
+        <div class="col-md-4 form-row offset-md-2" >
             <label for="firstName" class="form-label">First Name</label>
             <input id="firstName" class="form-control" placeholder="First name" name="firstName" required>
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="lastName" class="form-label">Last Name</label>
             <input id="lastName" class="form-control" placeholder="Last Name" name="lastName" required>
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="age" class="form-label">Age</label>
             <input id="age" class="form-control" placeholder="Age" name="age" required>
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="hiredate" class="form-label">Hire Date</label>
             <input type="date" id="hiredate" class="form-control" placeholder="Hire Date" name="hireDate" required>
         </div>
         </div>
         <div class="row">
-        <div class="col-md-4 form-row">
+        <div class="col-md-4 form-row offset-md-2">
             <label for="functionLevel" class="form-label">Function Level</label>
             <select class="form-control" name="functionLevel" id="functionLevel" required>
                 <option th:each="function :${functionLevels}" th:text="${function.getName()}" th:value="${function.getId()}"></option>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 offset-md-2">
             <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
         </div>
     </div>
