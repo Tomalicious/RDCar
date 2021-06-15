@@ -47,4 +47,7 @@ public class Employee implements Serializable {
             })
     private List<Car> historyCars = new ArrayList<>();
 
+    @OneToOne
+    private Car currentCar;
+
 }

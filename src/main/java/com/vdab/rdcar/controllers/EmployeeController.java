@@ -1,4 +1,5 @@
 package com.vdab.rdcar.controllers;
+import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
 import com.vdab.rdcar.services.EmployeeService;
@@ -34,8 +35,12 @@ public class EmployeeController {
 
     @GetMapping(value = "/editEmployee/{id}")
     public String showEditPage(@PathVariable("id") Long id, Model model){
+        List<Car> historyList = employeeService.findById(id).getHistoryCars();
+        model.addAttribute("historyList" , historyList);
         model.addAttribute("editEmployee",employeeService.findById(id));
         model.addAttribute("functionLevels" ,  FunctionLevels.values());
+        model.addAttribute("newEmployee" ,  Employee newEmployee = new Employee();
+
         return "edit";
     }
 

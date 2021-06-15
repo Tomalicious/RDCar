@@ -40,6 +40,12 @@
             </select>
         </div>
         </div>
+        <div class="col-md-4 form-row">
+            <label for="currentCar" class="form-label" >Current Car</label>
+            <select class="form-control" name="currentCar" id="currentCar">
+                <option th:each="history :${historyList}" th:text="${history.getDModel()}" th:value="${history}"></option>
+            </select>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-4">
