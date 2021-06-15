@@ -6,7 +6,7 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
-<form method="post" th:action="@{/edit/{id}(id=${editEmployee.id})}" style="margin-top: 20px">
+<form method="post" th:action="@{/edit/{id}(id=${editEmployee.id})}" th:object="${newEmployee}"  style="margin-top: 20px">
     <div>
         <div class="row">
         <div class="col-md-4 form-row offset-md-2" >
@@ -40,19 +40,15 @@
             </select>
         </div>
         </div>
-        <div class="row">
-        <div class="col-md-4 form-row offset-md-2">
-            <label for="currentCar" class="form-label" >Current Car</label>
-            <select class="form-control" name="currentCar" id="currentCar">
-                <option th:each="history :${historyList}" th:text="${history.getDModel()}" th:value="${history}"></option>
-            </select>
-        </div>
-        </div>
     </div>
     <div class="row">
-        <div class="col-md-4 offset-md-2">
+        <div class="col-md-2 offset-md-2">
             <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
         </div>
+        <div class="col-md-2">
+            <a class="form-control btn btn-primary" style="background-color: #212529" th:href="@{/editCurrent/{id}(id=${editEmployee.getId()})}">Edit Current Car</a>
+        </div>
+
     </div>
 </form>
 </body>

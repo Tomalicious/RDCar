@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import java.util.List;
 
 @Controller
 public class EmployeeController {
+
     @Autowired
     EmployeeService employeeService;
 
@@ -29,20 +31,17 @@ public class EmployeeController {
         return "redirect:/";
     }
 
-
-
     @GetMapping(value = "/editEmployee/{id}")
     public String showEditPage(@PathVariable("id") Long id, Model model){
-        List<Car> historyList = employeeService.findById(id).getHistoryCars();
-        model.addAttribute("historyList" , historyList);
         model.addAttribute("editEmployee",employeeService.findById(id));
         model.addAttribute("functionLevels" ,  FunctionLevels.values());
+        model.addAttribute("newEmployee" , new Employee());
         return "edit";
     }
 
     @PostMapping(value = "/edit/{id}")
-    public String editEmployee(@ModelAttribute Employee employee){
-        employeeService.updateEmployee(employee);
+    public String editEmployee(@ModelAttribute Employee newEmployee){
+        employeeService.updateEmployee(newEmployee);
         return "redirect:/";
     }
 

@@ -40,12 +40,14 @@ public class Employee implements Serializable {
     private Integer functionLevel;
 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "employee_car_history",
-            joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "car_id")
-            })
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @Column
+//    @JoinTable(name = "employee_car_history",
+//            joinColumns = {@JoinColumn(name = "employee_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "car_id")
+//            })
     private List<Car> historyCars = new ArrayList<>();
+
 
     @OneToOne
     private Car currentCar;
