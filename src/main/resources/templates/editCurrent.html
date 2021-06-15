@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<form method="post" th:action="@{/editCurrent/{id}(id=${editEmployee.id})}" th:object="${newCar}"  style="margin-top: 20px">
+    <div>
+        <div class="row">
+        <div class="col-md-4 form-row offset-md-2">
+            <label for="currentCar" class="form-label" >Current Car</label>
+            <select class="form-control" name="currentCar" id="currentCar">
+                <option th:each="history :${historyList}" th:text="${history.getDModel()}" th:value="${history}"></option>
+            </select>
+        </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 offset-md-2">
+            <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

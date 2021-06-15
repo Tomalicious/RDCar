@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class CarController {
 
@@ -31,4 +33,31 @@ public class CarController {
         employeeService.addCarToHistory(id , carId);
         return "redirect:/";
     }
+
+    @GetMapping(value = "/editCurrent/{id}")
+    public String addCurrent(@PathVariable("id") Long id , Model model) {
+        List<Car> historyList = employeeService.findById(id).getHistoryCars();
+        model.addAttribute("historyList" , historyList);
+        model.addAttribute("editEmployee",employeeService.findById(id));
+        model.addAttribute("newCar" , new Car());
+        return "editCurrent";
+    }
+
+    @PostMapping(value = "/editCurrent/{id}")
+    public String addCurrentCar( @PathVariable("id") Long id ,@ModelAttribute Car newCar) {
+        Employee employee = employeeService.findById(id);
+        employeeService.removeById(id);
+        employee.setCurrentCar(newCar);
+        employeeService.updateEmployee(employee);
+        return "redirect:/";
+    }
+
+    @GetMapping(value = "/orderCar/{id}")
+    public String showOrderCar(@PathVariable("id") Long id, Model model) {
+        Employee employee = employeeService.findById(id);
+        model.addAttribute("allCars", carService.getCars());
+        model.addAttribute("editEmployee" , employee);
+        return "addingTo";
+    }
+
 }

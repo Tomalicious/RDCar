@@ -5,6 +5,11 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
+
+
+<div class="col-md-2">
+    <a class="form-control btn btn-primary" style="background-color: #212529" th:href="@{/orderCar/{id}(id=${editEmployee.getId()})}">ORDER NEW CAR</a>
+</div>
 <div class="classcontainer col-md-8 offset-2">
     <table class="table table-hover table-dark" >
         <thead>
@@ -31,10 +36,10 @@
         </tr>
         </thead>
 
-        <tbody>
-        </tr>
-        </tbody>
     </table>
+    <div class="col-md-2">
+        <a class="form-control btn btn-primary" style="background-color: #212529" th:href="@{/orderCar/{id}(id=${editEmployee.getId()})}">ORDER NEW CAR</a>
+    </div>
 
 </div>
 

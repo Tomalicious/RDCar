@@ -19,4 +19,7 @@ public class CarService {
     }
 
 
+    public Car findById(Long id) {
+        return carRepository.findById(id);
+    }
 }
