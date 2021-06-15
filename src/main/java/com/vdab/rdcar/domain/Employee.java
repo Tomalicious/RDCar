@@ -41,6 +41,10 @@ public class Employee implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
+    private Integer currentCarMileage;
+
+    private String email;
+
     @Transient
     private Long amountYearsService;
 
@@ -70,7 +74,7 @@ public class Employee implements Serializable {
     private List<Car> historyCars = new ArrayList<>();
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REFRESH)
     private Car currentCar;
 
 }

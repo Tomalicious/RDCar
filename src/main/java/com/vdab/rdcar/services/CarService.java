@@ -6,6 +6,9 @@ import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
 import com.vdab.rdcar.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +18,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class CarService {
+
+    @Autowired
+    private JavaMailSender jms;
 
     @Autowired
     private EmployeeService employeeService;
@@ -65,5 +71,27 @@ public class CarService {
 //        }
         List<FunctionLevels> functionLevels = Arrays.stream(FunctionLevels.values()).filter(functionLevels1 -> functionLevels1.ordinal() >= emp.getFunctionLevel().ordinal() - 1).filter(functionLevels1 -> functionLevels1.ordinal() <= emp.getFunctionLevel().ordinal() + 1).collect(Collectors.toList());
         return functionLevels;
+    }
+
+    @Scheduled(cron= "0 0 12 1/1 * ? *")
+    public void notifyEmployee(){
+        List<Employee> checkMileage = employeeService.getEmployees();
+        for (Employee e : checkMileage){
+            Integer mileage = e.getCurrentCarMileage();
+            Integer maxMileage = Integer.parseInt(e.getCurrentCar().getMaxKm());
+            if(mileage > maxMileage){
+                SimpleMailMessage email = new SimpleMailMessage();
+                email.setFrom("tototonique@gmail.com");
+                email.setTo(e.getEmail());
+                email.setSubject("Order Car");
+                email.setText("You've exceeded your max car miliage , please contact me to order a new car!");
+                jms.send(email);
+            }
+        }
+
+
+
+
+
     }
 }

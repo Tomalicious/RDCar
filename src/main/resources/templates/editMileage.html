@@ -6,7 +6,7 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
-<form method="post" th:action="@{/editCurrent/{id}(id=${editEmployee.id})}" th:object="${newEmployee}" style="margin-top: 20px">
+<form method="post" th:action="@{/editMileage/{id}(id=${editEmployee.id})}" th:object="${newEmployee}" style="margin-top: 20px">
     <div>
         <div class="row">
         <div class="col-md-4 form-row offset-md-2">

@@ -27,6 +27,12 @@
         </div>
         </div>
         <div class="row">
+            <div class="col-md-4 form-row offset-md-2">
+                <label for="email" class="form-label">Email</label>
+                <input th:value="${editEmployee.email}" id="email" class="form-control" placeholder="Email" name="email">
+            </div>
+        </div>
+        <div class="row">
         <div class="col-md-4 form-row offset-md-2">
             <label for="hiredate" class="form-label">Hire Date</label>
             <input th:value="${editEmployee.hireDate}" id="hiredate" class="form-control" placeholder="Hire Date" name="hireDate">
@@ -43,12 +49,17 @@
     </div>
     <div class="row">
         <div class="col-md-2 offset-md-2">
-            <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
+            <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529;margin-top: 0" >Submit</button>
         </div>
         <div class="col-md-2">
             <a class="form-control btn btn-primary" style="background-color: #212529" th:href="@{/editCurrent/{id}(id=${editEmployee.getId()})}">Edit Current Car</a>
         </div>
 
+    </div>
+    <div class="row">
+        <div class="col-md-4 offset-md-2">
+            <a class="form-control btn btn-primary" style="background-color: #212529" th:href="@{/editMileageCurrent/{id}(id=${editEmployee.getId()})}">Edit Mileage Current Car</a>
+        </div>
     </div>
 </form>
 </body>
