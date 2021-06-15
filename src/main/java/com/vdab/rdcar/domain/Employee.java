@@ -44,7 +44,8 @@ public class Employee implements Serializable {
     @Transient
     private Long amountYearsService;
 
-    private Integer functionLevel;
+    @Enumerated(EnumType.STRING)
+    private FunctionLevels functionLevel;
 
     public Date getHireDate() {
        if(this.hireDate != null) {

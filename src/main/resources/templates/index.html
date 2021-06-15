@@ -29,7 +29,7 @@
             <td th:text="${employee.getAge()}" style="text-align:center"></td>
             <td th:text="${employee.getHireDate()}" style="text-align:center"></td>
             <td th:text="${employee.getAmountYearsService()}" style="text-align:center"></td>
-            <td th:text="${employee.getFunctionLevel()}" style="text-align:center"></td>
+            <td th:text="${employee.getFunctionLevel().getDisplayName()}" style="text-align:center"></td>
 
 
             <td style="text-align:center">

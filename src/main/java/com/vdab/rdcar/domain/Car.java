@@ -1,6 +1,7 @@
 package com.vdab.rdcar.domain;
 
 
+import com.vdab.rdcar.repositories.FunctionLevelConverter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,37 +22,38 @@ public class Car implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String aCategory;
+    @Convert(converter = FunctionLevelConverter.class)
+    private FunctionLevels category;
 
-    private String bCo2;
+    private String co2;
 
-    private String cBrand;
+    private String brand;
 
-    private String dModel;
+    private String model;
 
-    private String ePack;
+    private String pack;
 
-    private String fFuel;
+    private String fuel;
 
-    private String gFuelTank;
+    private String fuelTank;
 
-    private String hTowingBracket;
+    private String towingBracket;
 
-    private String iTypeRim;
+    private String typeRim;
 
-    private String jMaxKmYear;
+    private String maxKmYear;
 
-    private String kIdealKm;
+    private String idealKm;
 
-    private String lMaxKm;
+    private String maxKm;
 
-    private String mListPrice;
+    private String listPrice;
 
-    private String nBenefitMonth;
+    private String benefitMonth;
 
-    private String oUpgradeAmount;
+    private String upgradeAmount;
 
-    private String pDowngradeAmount;
+    private String downgradeAmount;
 
 }
 

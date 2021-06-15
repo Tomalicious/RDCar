@@ -55,9 +55,10 @@ public class CarController {
     @GetMapping(value = "/orderCar/{id}")
     public String showOrderCar(@PathVariable("id") Long id, Model model) {
         Employee employee = employeeService.findById(id);
-        model.addAttribute("allCars", carService.getCars());
+        model.addAttribute("allAvailableCars", carService.getCarsAvailable(id));
         model.addAttribute("editEmployee" , employee);
-        return "addingTo";
+        return "orderCar";
     }
+
 
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<div th:insert="fragments/head :: navbar"></div>
+
+<div class="classcontainer col-md-8 offset-2">
+    <form method="post"  th:action="@{/sendEmail}" th:object="${newContact}" style="margin-top: 20px">
+        <div>
+            <div class="row">
+                <div class="col-md-4 form-row offset-md-2" >
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input id="firstName" class="form-control" placeholder="First name" name="firstName" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-row offset-md-2">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input id="lastName" class="form-control" placeholder="Last Name" name="lastName" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-row offset-md-2">
+                    <label for="age" class="form-label">Age</label>
+                    <input id="age" class="form-control" placeholder="Age" name="age" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-row offset-md-2">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 form-row offset-md-2">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea type="text" id="message" class="form-control" placeholder="Message" name="message" required></textarea>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 offset-md-2">
+                <button id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Submit</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

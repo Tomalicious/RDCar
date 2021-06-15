@@ -5,13 +5,8 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
+<h1 style="text-align: center"> Choose A Car !</h1>
 
-<div class="row">
-    <div class="col-md-8 offset-md-2" style="text-align: center">
-        <a class="form-control btn btn-primary" style="background-color: #212529"
-           th:href="@{/orderCar/{id}(id=${chosenEmployee.getId()})}">ORDER NEW CAR</a>
-    </div>
-</div>
 <div class="row">
     <div class="classcontainer col-md-8 offset-2">
         <table class="table table-hover table-dark">
@@ -22,17 +17,17 @@
                 <th data-field="lastName" style="text-align:center">Model</th>
                 <th data-field="lastName" style="text-align:center">Fuel</th>
                 <th data-field="lastName" style="text-align:center">List Price</th>
-                <th data-field="" style="text-align:center">Add to history</th>
+                <th data-field="" style="text-align:center">Order Car</th>
 
             </tr>
-            <tr th:each="car : ${allCars}">
-                <td th:text="${car.getCategory()}" style="text-align:center"></td>
+            <tr th:each="car : ${allAvailableCars}">
+                <td th:text="${car.getCategory().getDisplayName()}" style="text-align:center"></td>
                 <td th:text="${car.getBrand()}" style="text-align:center"></td>
                 <td th:text="${car.getModel()}" style="text-align:center"></td>
                 <td th:text="${car.getFuel()}" style="text-align:center"></td>
                 <td th:text="${car.getListPrice()}" style="text-align:center"></td>
                 <td style="text-align:center">
-                    <a th:href="@{/addingToHistory/{id}/{carId} (id = ${chosenEmployee.getId()} , carId = ${car.getId})}">
+                    <a th:href="@{/orderedCar/{id}/{carId} (id = ${editEmployee.getId()} , carId = ${car.getId})}">
                         <span class="material-icons">directions_car_filled</span></a>
                 </td>
 
@@ -40,12 +35,7 @@
             </thead>
 
         </table>
-        <div class="row">
-            <div class="col-md-8 offset-md-2" style="text-align: center">
-                <a class="form-control btn btn-primary" style="background-color: #212529"
-                   th:href="@{/orderCar/{id}(id=${chosenEmployee.getId()})}">ORDER NEW CAR</a>
-            </div>
-        </div>
+
 
     </div>
 </div>
