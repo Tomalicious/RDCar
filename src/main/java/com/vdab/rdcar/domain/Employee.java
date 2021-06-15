@@ -70,7 +70,7 @@ public class Employee implements Serializable {
     private List<Car> historyCars = new ArrayList<>();
 
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REFRESH)
     private Car currentCar;
 
 }

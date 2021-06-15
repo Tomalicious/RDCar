@@ -39,25 +39,33 @@ public class CarController {
         List<Car> historyList = employeeService.findById(id).getHistoryCars();
         model.addAttribute("historyList" , historyList);
         model.addAttribute("editEmployee",employeeService.findById(id));
-        model.addAttribute("newCar" , new Car());
+        model.addAttribute("newEmployee" , new Employee());
         return "editCurrent";
     }
 
     @PostMapping(value = "/editCurrent/{id}")
-    public String addCurrentCar( @PathVariable("id") Long id ,@ModelAttribute Car newCar) {
+    public String addCurrentCar( @PathVariable("id") Long id ,@ModelAttribute Employee newEmployee) {
         Employee employee = employeeService.findById(id);
-        employeeService.removeById(id);
-        employee.setCurrentCar(newCar);
+        employee.setCurrentCar(newEmployee.getCurrentCar());
+//        employee.setCurrentCar(newCar);
         employeeService.updateEmployee(employee);
         return "redirect:/";
     }
 
     @GetMapping(value = "/orderCar/{id}")
     public String showOrderCar(@PathVariable("id") Long id, Model model) {
-        Employee employee = employeeService.findById(id);
         model.addAttribute("allAvailableCars", carService.getCarsAvailable(id));
-        model.addAttribute("editEmployee" , employee);
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
         return "orderCar";
+    }
+
+    @GetMapping(value = "/orderedCar/{id}/{carId}")
+    public String addNewCar( @PathVariable("id") Long id , @PathVariable("carId") Long carId) {
+        employeeService.addCarToHistory(id , carId);
+        Employee employee =  employeeService.findById(id);
+        employee.setCurrentCar(carService.findById(carId));
+        employeeService.updateEmployee(employee);
+        return "redirect:/";
     }
 
 

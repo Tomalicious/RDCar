@@ -6,13 +6,13 @@
 
 <div th:insert="fragments/head :: navbar"></div>
 
-<form method="post" th:action="@{/editCurrent/{id}(id=${editEmployee.id})}" th:object="${newCar}"  style="margin-top: 20px">
+<form method="post" th:action="@{/editCurrent/{id}(id=${editEmployee.id})}" th:object="${newEmployee}" style="margin-top: 20px">
     <div>
         <div class="row">
         <div class="col-md-4 form-row offset-md-2">
             <label for="currentCar" class="form-label" >Current Car</label>
-            <select class="form-control" name="currentCar" id="currentCar">
-                <option th:each="history :${historyList}" th:text="${history.getModel()}" th:value="${history}"></option>
+            <select class="form-control" name="currentCar" id="currentCar" th:field="*{currentCar}">
+                <option th:each="history :${historyList}" th:text="${history.getModel()}" th:value="${{history}}"></option>
             </select>
         </div>
         </div>
