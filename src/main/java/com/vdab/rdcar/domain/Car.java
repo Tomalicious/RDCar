@@ -55,6 +55,8 @@ public class Car implements Serializable {
 
     private String downgradeAmount;
 
+    @Lob
+    private Byte[] image;
 }
 
 

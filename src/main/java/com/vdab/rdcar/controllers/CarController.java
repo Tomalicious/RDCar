@@ -64,9 +64,9 @@ public class CarController {
         Employee ifEmp = employeeService.findById(id);
         Car ifCar = carService.findById(carId);
         if(ifCar.getCategory().ordinal() < ifEmp.getFunctionLevel().ordinal()) {
-            return "downgradePage";
+            return "redirect:/downgradePage/"+ id + "/" + carId;
         }else if(ifCar.getCategory().ordinal() > ifEmp.getFunctionLevel().ordinal()){
-            return "upgradePage";
+            return "redirect:/upgradePage/"+ id + "/" + carId;
         }else {
             employeeService.addCarToHistory(id, carId);
             Employee employee = employeeService.findById(id);
@@ -78,11 +78,27 @@ public class CarController {
         }
     }
 
+    @GetMapping(value = "/upgradePage/{id}/{carId}")
+    public String showDowngrade(@PathVariable("id") Long id,@PathVariable("carId") Long carId, Model model) {
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("car", carService.findById(carId));
+        return "upgradePage";
+    }
+
+    @GetMapping(value = "/downgradePage/{id}/{carId}")
+    public String showUpgrade(@PathVariable("id") Long id ,@PathVariable("carId") Long carId, Model model) {
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("car", carService.findById(carId));
+
+
+        return "downgradePage";
+    }
+
 
     @GetMapping(value = "/editMileageCurrent/{id}")
     public String showEditMileage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
-        model.addAttribute("newEmployee" , new Employee());
+        model.addAttribute("newCar" , new Car());
 
         return "editMileage";
     }
@@ -91,24 +107,7 @@ public class CarController {
     public String editEmployee(@PathVariable("id") Long id ,  @ModelAttribute Employee newEmployee){
         Employee employee = employeeService.findById(id);
         employee.setCurrentCarMileage(newEmployee.getCurrentCarMileage());
-//        employee.setCurrentCar(newCar);
         employeeService.updateEmployee(employee);
         return "redirect:/";
-    }
-
-    @GetMapping(value = "/upgradePage/{id}")
-    public String showDowngrade(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("editEmployee" ,employeeService.findById(id));
-        model.addAttribute("newEmployee" , new Employee());
-
-        return "editMileage";
-    }
-
-    @GetMapping(value = "/downgradePage/{id}")
-    public String showUpgrade(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("editEmployee" ,employeeService.findById(id));
-        model.addAttribute("newEmployee" , new Employee());
-
-        return "editMileage";
     }
 }
