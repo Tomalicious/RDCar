@@ -5,18 +5,18 @@ import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
 import com.vdab.rdcar.repositories.CarRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class CarService {
 
     @Autowired
@@ -73,28 +73,34 @@ public class CarService {
         return functionLevels;
     }
 
-    @Scheduled(cron = "0 0 12 1/1 * ?")
-    public void notifyEmployee(){
+    @Scheduled(cron = "0 0/1 * * * *")
+    public void notifyEmployee() {
+        System.out.println("notify");
         List<Employee> checkMileage = employeeService.getEmployees();
-        for (Employee e : checkMileage){
-            Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
-            Integer maxMileage = Integer.parseInt(e.getCurrentCar().getMaxKm());
-            if(mileage > maxMileage && mileage < maxMileage+5000){
-                SimpleMailMessage email = new SimpleMailMessage();
-                email.setFrom("tototonique@gmail.com");
-                email.setTo(e.getEmail());
-                email.setSubject("Order Car");
-                email.setText("You've exceeded your max car miliage , please contact me to order a new car!");
-                jms.send(email);
-            }else if((mileage / 30000) >= e.getAmountOfMaintenances() + 1){
-                e.setAmountOfMaintenances(e.getAmountOfMaintenances()+1);
+        if (!checkMileage.isEmpty()) {
+            for (Employee e : checkMileage) {
+                if (e.getCurrentCar() != null) {
+                    Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
+                    Integer maxMileage = Integer.parseInt(e.getCurrentCar().getMaxKm());
+                    if (mileage > maxMileage && mileage < maxMileage + 5000) {
+                        SimpleMailMessage email = new SimpleMailMessage();
+                        email.setFrom("tototonique@gmail.com");
+                        email.setTo(e.getEmail());
+                        email.setSubject("Order Car");
+                        email.setText("You've exceeded your max car miliage , please contact me to order a new car!");
+                        jms.send(email);
+                        log.info("tototonique@gmail.com" + email + " " +e.getEmail());
+                    } else if ((mileage / 30000) >= e.getAmountOfMaintenances() + 1) {
+                        e.setAmountOfMaintenances(e.getAmountOfMaintenances() + 1);
 
-                SimpleMailMessage email = new SimpleMailMessage();
-                email.setFrom("tototonique@gmail.com");
-                email.setTo(e.getEmail());
-                email.setSubject("Car Maintenance");
-                email.setText("You are obliged to go on a Maintenance with your car");
-                jms.send(email);
+                        SimpleMailMessage email = new SimpleMailMessage();
+                        email.setFrom("tototonique@gmail.com");
+                        email.setTo(e.getEmail());
+                        email.setSubject("Car Maintenance");
+                        email.setText("You are obliged to go on a Maintenance with your car");
+                        jms.send(email);
+                    }
+                }
             }
         }
     }
@@ -102,7 +108,7 @@ public class CarService {
     @Scheduled(cron = "0 0 12 1/1 * ?")
     public void incrementMileage() {
         List<Employee> employeeList = employeeService.getEmployees();
-        for(Employee e : employeeList){
+        for (Employee e : employeeList) {
             Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
             mileage += 2000;
             String updatedMileage = mileage.toString();
