@@ -96,7 +96,7 @@ public class CarController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/editMileageCurrent/{id}")
+    @GetMapping(value = "/upgradePage/{id}")
     public String showDowngrade(@PathVariable("id") Long id, Model model) {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("newEmployee" , new Employee());
@@ -104,13 +104,11 @@ public class CarController {
         return "editMileage";
     }
 
-    @GetMapping(value = "/editMileageCurrent/{id}")
+    @GetMapping(value = "/downgradePage/{id}")
     public String showUpgrade(@PathVariable("id") Long id, Model model) {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("newEmployee" , new Employee());
 
         return "editMileage";
     }
-
-
 }
