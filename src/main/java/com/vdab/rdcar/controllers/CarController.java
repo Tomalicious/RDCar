@@ -61,24 +61,55 @@ public class CarController {
 
     @GetMapping(value = "/orderedCar/{id}/{carId}")
     public String addNewCar( @PathVariable("id") Long id , @PathVariable("carId") Long carId) {
-        employeeService.addCarToHistory(id , carId);
-        Employee employee =  employeeService.findById(id);
-        employee.setCurrentCar(carService.findById(carId));
-        employeeService.updateEmployee(employee);
-        return "redirect:/";
+        Employee ifEmp = employeeService.findById(id);
+        Car ifCar = carService.findById(carId);
+        if(ifCar.getCategory().ordinal() < ifEmp.getFunctionLevel().ordinal()) {
+            return "downgradePage";
+        }else if(ifCar.getCategory().ordinal() > ifEmp.getFunctionLevel().ordinal()){
+            return "upgradePage";
+        }else {
+            employeeService.addCarToHistory(id, carId);
+            Employee employee = employeeService.findById(id);
+            employee.setCurrentCar(carService.findById(carId));
+            employee.setAmountOfMaintenances(0);
+            employee.setCurrentCarMileage("0");
+            employeeService.updateEmployee(employee);
+            return "redirect:/";
+        }
     }
 
 
     @GetMapping(value = "/editMileageCurrent/{id}")
     public String showEditMileage(@PathVariable("id") Long id, Model model) {
-
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("newEmployee" , new Employee());
 
         return "editMileage";
     }
 
     @PostMapping(value = "/editMileage/{id}")
     public String editEmployee(@PathVariable("id") Long id ,  @ModelAttribute Employee newEmployee){
+        Employee employee = employeeService.findById(id);
+        employee.setCurrentCarMileage(newEmployee.getCurrentCarMileage());
+//        employee.setCurrentCar(newCar);
+        employeeService.updateEmployee(employee);
         return "redirect:/";
+    }
+
+    @GetMapping(value = "/editMileageCurrent/{id}")
+    public String showDowngrade(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("newEmployee" , new Employee());
+
+        return "editMileage";
+    }
+
+    @GetMapping(value = "/editMileageCurrent/{id}")
+    public String showUpgrade(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("newEmployee" , new Employee());
+
+        return "editMileage";
     }
 
 

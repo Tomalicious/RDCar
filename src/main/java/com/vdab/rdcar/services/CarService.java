@@ -73,25 +73,40 @@ public class CarService {
         return functionLevels;
     }
 
-    @Scheduled(cron= "0 0 12 1/1 * ? *")
+    @Scheduled(cron = "0 0 12 1/1 * ?")
     public void notifyEmployee(){
         List<Employee> checkMileage = employeeService.getEmployees();
         for (Employee e : checkMileage){
-            Integer mileage = e.getCurrentCarMileage();
+            Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
             Integer maxMileage = Integer.parseInt(e.getCurrentCar().getMaxKm());
-            if(mileage > maxMileage){
+            if(mileage > maxMileage && mileage < maxMileage+5000){
                 SimpleMailMessage email = new SimpleMailMessage();
                 email.setFrom("tototonique@gmail.com");
                 email.setTo(e.getEmail());
                 email.setSubject("Order Car");
                 email.setText("You've exceeded your max car miliage , please contact me to order a new car!");
                 jms.send(email);
+            }else if((mileage / 30000) >= e.getAmountOfMaintenances() + 1){
+                e.setAmountOfMaintenances(e.getAmountOfMaintenances()+1);
+
+                SimpleMailMessage email = new SimpleMailMessage();
+                email.setFrom("tototonique@gmail.com");
+                email.setTo(e.getEmail());
+                email.setSubject("Car Maintenance");
+                email.setText("You are obliged to go on a Maintenance with your car");
+                jms.send(email);
             }
         }
+    }
 
-
-
-
-
+    @Scheduled(cron = "0 0 12 1/1 * ?")
+    public void incrementMileage() {
+        List<Employee> employeeList = employeeService.getEmployees();
+        for(Employee e : employeeList){
+            Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
+            mileage += 2000;
+            String updatedMileage = mileage.toString();
+            e.setCurrentCarMileage(updatedMileage);
+        }
     }
 }

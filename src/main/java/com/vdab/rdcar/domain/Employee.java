@@ -41,7 +41,9 @@ public class Employee implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
-    private Integer currentCarMileage;
+    private String currentCarMileage;
+
+    private Integer amountOfMaintenances;
 
     private String email;
 
@@ -57,7 +59,6 @@ public class Employee implements Serializable {
            LocalDate hiredDate =  Instant.ofEpochMilli(this.hireDate.getTime())
                    .atZone(ZoneId.systemDefault())
                    .toLocalDate();
-
 
            this.amountYearsService = ChronoUnit.YEARS.between(hiredDate , now);
        }
