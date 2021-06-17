@@ -87,9 +87,8 @@ public class CarService {
                         email.setFrom("tototonique@gmail.com");
                         email.setTo(e.getEmail());
                         email.setSubject("Order Car");
-                        email.setText("You've exceeded your max car miliage , please contact me to order a new car!");
+                        email.setText("You have exceeded your max car mileage , please contact me to order a new car!");
                         jms.send(email);
-                        log.info("tototonique@gmail.com" + email + " " +e.getEmail());
                     } else if ((mileage / 30000) >= e.getAmountOfMaintenances() + 1) {
                         e.setAmountOfMaintenances(e.getAmountOfMaintenances() + 1);
 
