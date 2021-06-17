@@ -9,20 +9,20 @@
 <form th:action="@{/downgradePage/{id}/{carId} (id=${editEmployee.id} , carId = ${car.id})}" style="margin-top: 20px">
     <div>
         <div class="row">
-            <div class="col-md-4 form-row offset-md-2">
+            <div class="col-md-2">
                 <h1>Downgrade budget</h1>
-                <h1 th:text="${car.getDowngradeAmount()}"></h1>
+                <h1 th:text="${down}"></h1>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2 offset-md-2">
-            <a class="form-control btn btn-primary" style="background-color: #212529" >Confirm Order</a>
+    <div class="row" style="margin-left: 15px ">
+        <div class="col-md-2 ">
+            <a th:href="@{/orderedCarUpDown/{id}/{carId}(id = ${editEmployee.getId()} , carId = ${car.getId})}" class="form-control btn btn-primary" style="background-color: #212529" >Confirm Order</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-2 offset-md-2">
-            <a  class="form-control btn btn-primary" style="background-color: #212529" >Cancel Order</a>
+    <div class="row" >
+        <div class="col-md-2 ">
+            <a th:href="@{/}" class="form-control btn btn-primary" style="background-color: #212529" >Cancel Order</a>
         </div>
     </div>
 </form>

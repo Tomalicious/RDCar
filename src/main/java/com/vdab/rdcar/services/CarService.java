@@ -82,7 +82,7 @@ public class CarService {
                 if (e.getCurrentCar() != null) {
                     Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
                     Integer maxMileage = Integer.parseInt(e.getCurrentCar().getMaxKm());
-                    if (mileage > maxMileage && mileage < maxMileage + 5000) {
+                    if (mileage > maxMileage) {
                         SimpleMailMessage email = new SimpleMailMessage();
                         email.setFrom("tototonique@gmail.com");
                         email.setTo(e.getEmail());

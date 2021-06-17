@@ -64,9 +64,9 @@ public class CarController {
         Employee ifEmp = employeeService.findById(id);
         Car ifCar = carService.findById(carId);
         if(ifCar.getCategory().ordinal() < ifEmp.getFunctionLevel().ordinal()) {
-            return "redirect:/downgradePage/"+ id + "/" + carId;
+            return "forward:/downgradePage/" + id + "/" + carId ;
         }else if(ifCar.getCategory().ordinal() > ifEmp.getFunctionLevel().ordinal()){
-            return "redirect:/upgradePage/"+ id + "/" + carId;
+            return "forward:/upgradePage/" + id + "/" + carId ;
         }else {
             employeeService.addCarToHistory(id, carId);
             Employee employee = employeeService.findById(id);
@@ -79,19 +79,36 @@ public class CarController {
     }
 
     @GetMapping(value = "/upgradePage/{id}/{carId}")
-    public String showDowngrade(@PathVariable("id") Long id,@PathVariable("carId") Long carId, Model model) {
+    public String showUpgradepage(@PathVariable("id") Long id,@PathVariable("carId") Long carId, Model model) {
+        String upgradeAmount = carService.findById(carId).getUpgradeAmount();
+        Float upgrade = Float.parseFloat(upgradeAmount);
+        Float upgraded = Math.round(upgrade*100.0F)/100.0F;
         model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("up",upgraded );
         model.addAttribute("car", carService.findById(carId));
         return "upgradePage";
     }
 
     @GetMapping(value = "/downgradePage/{id}/{carId}")
-    public String showUpgrade(@PathVariable("id") Long id ,@PathVariable("carId") Long carId, Model model) {
+    public String showDowngrade(@PathVariable("id") Long id ,@PathVariable("carId") Long carId, Model model) {
+        String downgradeAmount = carService.findById(carId).getDowngradeAmount();
+        Float downgrade = Float.parseFloat(downgradeAmount);
+        Float downgraded = Math.round(downgrade*100.0F)/100.0F;
         model.addAttribute("editEmployee" ,employeeService.findById(id));
+        model.addAttribute("down",downgraded );
         model.addAttribute("car", carService.findById(carId));
-
-
         return "downgradePage";
+    }
+
+    @GetMapping(value = "/orderedCarUpDown/{id}/{carId}")
+    public String addNewCarUpgradedOrDowngraded( @PathVariable("id") Long id , @PathVariable("carId") Long carId) {
+            employeeService.addCarToHistory(id, carId);
+            Employee employee = employeeService.findById(id);
+            employee.setCurrentCar(carService.findById(carId));
+            employee.setAmountOfMaintenances(0);
+            employee.setCurrentCarMileage("0");
+            employeeService.updateEmployee(employee);
+            return "redirect:/";
     }
 
 
@@ -110,4 +127,7 @@ public class CarController {
         employeeService.updateEmployee(employee);
         return "redirect:/";
     }
+
+
+
 }

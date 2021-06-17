@@ -1,30 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head"></head>
-
 <body>
 
 <div th:insert="fragments/head :: navbar"></div>
 
-<div style="margin-top: 20px">
+<form th:action="@{/downgradePage/{id}/{carId} (id=${editEmployee.id} , carId = ${car.id})}" style="margin-top: 20px">
     <div>
         <div class="row">
-        <div class="col-md-4 form-row offset-md-2">
-            <h1>Upgrade Price</h1>
-            <h1 th:text="${car.getUpgradeAmount()}"></h1>
-        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 offset-md-2">
-            <a id="submitbnt" type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Confirm Order</a>
+            <div class="col-md-2 ">
+                <h1>Upgrade price</h1>
+                <h1 th:text="${up}"></h1>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2 offset-md-2">
-            <a type="submit" class="form-control btn btn-primary" style="background-color: #212529" >Cancel Order</a>
+        <div class="col-md-2 ">
+            <a  th:href="@{/orderedCarUpDown/{id}/{carId}(id = ${editEmployee.getId()} , carId = ${car.getId})}" class="form-control btn btn-primary" style="background-color: #212529" >Confirm Order</a>
         </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col-md-2 ">
+            <a th:href="@{/}" class="form-control btn btn-primary" style="background-color: #212529" >Cancel Order</a>
+        </div>
+    </div>
+</form>
 </body>
 </html>
