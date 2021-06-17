@@ -26,7 +26,7 @@
 
             </tr>
             <tr th:each="car : ${allCars}">
-                <td th:text="${car.getCategory()}" style="text-align:center"></td>
+                <td th:text="${car.getCategory().getDisplayName()}" style="text-align:center"></td>
                 <td th:text="${car.getBrand()}" style="text-align:center"></td>
                 <td th:text="${car.getModel()}" style="text-align:center"></td>
                 <td th:text="${car.getFuel()}" style="text-align:center"></td>

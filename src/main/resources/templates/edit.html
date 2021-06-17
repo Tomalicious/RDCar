@@ -42,7 +42,7 @@
         <div class="col-md-4 form-row offset-md-2">
             <label for="functionLevel" class="form-label" >Function Level</label>
             <select class="form-control" name="functionLevel" id="functionLevel">
-                <option th:each="function :${functionLevels}" th:text="${function.getDisplayName()}"></option>
+                <option th:each="function :${functionLevels}" th:text="${function.getDisplayName()}" th:value="${function}"></option>
             </select>
         </div>
         </div>
