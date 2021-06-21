@@ -66,7 +66,7 @@ public class Employee implements Serializable {
 
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
     @Column
 //    @JoinTable(name = "employee_car_history",
 //            joinColumns = {@JoinColumn(name = "employee_id")},
