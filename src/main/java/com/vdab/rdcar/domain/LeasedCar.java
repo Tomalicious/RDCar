@@ -22,8 +22,11 @@ public class LeasedCar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @OneToOne
     private Car leasedCar;
 
-    private LocalDate leaseDate;
+    private Date leaseDate;
+
+    @ManyToOne
+    Employee employee;
 }

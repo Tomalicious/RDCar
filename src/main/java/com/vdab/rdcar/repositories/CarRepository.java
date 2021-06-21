@@ -4,11 +4,13 @@ package com.vdab.rdcar.repositories;
 import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
+import com.vdab.rdcar.domain.LeasedCar;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -32,4 +34,9 @@ public class CarRepository {
         query.setParameter("funtions" , functionLevels);
         return query.getResultList();
     }
+
+    @Transactional
+    public void newLease(LeasedCar newLease) {
+            entityManager.persist(newLease);
+        }
 }

@@ -2,6 +2,7 @@ package com.vdab.rdcar.controllers;
 
 import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
+import com.vdab.rdcar.domain.LeasedCar;
 import com.vdab.rdcar.services.CarService;
 import com.vdab.rdcar.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -73,8 +76,8 @@ public class CarController {
             employee.setAmountOfMaintenances(0);
             employee.setCurrentCarMileage("0");
             employeeService.updateEmployee(employee);
-
-
+            LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
+            carService.newLease(newLease);
             return "redirect:/";
         }
     }
@@ -87,6 +90,8 @@ public class CarController {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("up",upgraded );
         model.addAttribute("car", carService.findById(carId));
+        LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
+        carService.newLease(newLease);
         return "upgradePage";
     }
 
@@ -98,6 +103,8 @@ public class CarController {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("down",downgraded );
         model.addAttribute("car", carService.findById(carId));
+        LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
+        carService.newLease(newLease);
         return "downgradePage";
     }
 

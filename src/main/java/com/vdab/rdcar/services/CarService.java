@@ -4,6 +4,7 @@ package com.vdab.rdcar.services;
 import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
+import com.vdab.rdcar.domain.LeasedCar;
 import com.vdab.rdcar.repositories.CarRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,5 +114,9 @@ public class CarService {
             String updatedMileage = mileage.toString();
             e.setCurrentCarMileage(updatedMileage);
         }
+    }
+
+    public void newLease(LeasedCar newLease) {
+        carRepository.newLease(newLease);
     }
 }
