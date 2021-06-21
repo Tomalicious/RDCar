@@ -2,6 +2,8 @@ package com.vdab.rdcar.controllers;
 import com.vdab.rdcar.domain.Car;
 import com.vdab.rdcar.domain.Employee;
 import com.vdab.rdcar.domain.FunctionLevels;
+import com.vdab.rdcar.domain.LeasedCar;
+import com.vdab.rdcar.services.CarService;
 import com.vdab.rdcar.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,10 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    EmployeeService employeeService;
+    private CarService carService;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @GetMapping(value = "/")
     public String showEmployeePage(Model model) {
@@ -27,7 +32,11 @@ public class EmployeeController {
 
     @GetMapping(value= "/removeEmployee/{id}")
     public String deleteAnEmployee(@PathVariable("id") Long id) {
-        employeeService.removeById(id);
+            LeasedCar lease = carService.getLeasedByEmployeeId(id);
+            lease.setEmployee(null);
+            carService.updateLease(lease);
+            employeeService.removeById(id);
+
         return "redirect:/";
     }
 

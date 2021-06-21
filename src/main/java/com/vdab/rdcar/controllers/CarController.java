@@ -90,8 +90,6 @@ public class CarController {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("up",upgraded );
         model.addAttribute("car", carService.findById(carId));
-        LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
-        carService.newLease(newLease);
         return "upgradePage";
     }
 
@@ -103,10 +101,9 @@ public class CarController {
         model.addAttribute("editEmployee" ,employeeService.findById(id));
         model.addAttribute("down",downgraded );
         model.addAttribute("car", carService.findById(carId));
-        LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
-        carService.newLease(newLease);
         return "downgradePage";
     }
+
 
     @GetMapping(value = "/orderedCarUpDown/{id}/{carId}")
     public String addNewCarUpgradedOrDowngraded( @PathVariable("id") Long id , @PathVariable("carId") Long carId) {
@@ -116,6 +113,8 @@ public class CarController {
             employee.setAmountOfMaintenances(0);
             employee.setCurrentCarMileage("0");
             employeeService.updateEmployee(employee);
+            LeasedCar newLease = LeasedCar.builder().employee(employeeService.findById(id)).leaseDate(new Date()).leasedCar(carService.findById(carId)).build();
+            carService.newLease(newLease);
             return "redirect:/";
     }
 
@@ -128,6 +127,7 @@ public class CarController {
         return "editMileage";
     }
 
+
     @PostMapping(value = "/editMileage/{id}")
     public String editEmployee(@PathVariable("id") Long id ,  @ModelAttribute Employee newEmployee){
         Employee employee = employeeService.findById(id);
@@ -137,5 +137,39 @@ public class CarController {
     }
 
 
+    @GetMapping(value = "/leasedList")
+    public String showLeasedCars(Model model) {
+        model.addAttribute("leasedAssigned" , carService.getLeasedAssigned());
+        model.addAttribute("leasedNotAssigned" , carService.getLeasedNotAssigned());
+        String notAssigned = "Not Assigned to an Employee";
+        model.addAttribute("notAssigned" , notAssigned);
+        return "leased";
+    }
 
+
+    @GetMapping(value="/editLease/{carId}/{leaseId}")
+    public String editLeasedCars(@PathVariable("carId") Long carId , @PathVariable("leaseId") Long leaseId , Model model,  @ModelAttribute LeasedCar newLease){
+            model.addAttribute("allEmployees",  employeeService.getEmployees());
+            model.addAttribute("lease" , carService.getLeasedById(leaseId));
+            model.addAttribute("employee" , carService.getLeasedById(leaseId));
+            model.addAttribute("car" , carService.findById(carId));
+            model.addAttribute("newLease", new LeasedCar());
+            return "editLease";
+    }
+
+
+    @PostMapping(value="/editLeasedCar/{carId}/{leaseId}")
+    public String confirmEditLease( @PathVariable("carId") Long carId , @PathVariable("leaseId") Long leaseId ,  @ModelAttribute LeasedCar newLease){
+        LeasedCar lease = carService.getLeasedById(leaseId);
+        lease.setLeaseDate(newLease.getLeaseDate());
+        lease.setEmployee(newLease.getEmployee());
+        carService.updateLease(lease);
+        return "redirect:/";
+    }
+
+    @GetMapping(value="/deleteLease/{leaseId}")
+    public String deleteLease(@PathVariable("leaseId") Long leaseId){
+        carService.deleteLease(leaseId);
+        return "redirect:/";
+    }
 }

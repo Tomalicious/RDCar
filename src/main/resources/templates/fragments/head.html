@@ -56,13 +56,13 @@
                         <div class="col">
                             <div class="top-wrap d-flex">
                                 <div class="icon d-flex align-items-center justify-content-center" style="color: #FFFFFF"><span class="fa fa-location-arrow"></span></div>
-                                <div class="text" style="color: #FFFFFF"><span>Address</span><span>721 New York NY 10016</span></div>
+                                <div class="text" style="color: #FFFFFF"><span>Address</span><span> 2550 Kontich Belgium</span></div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="top-wrap d-flex">
                                 <div class="icon d-flex align-items-center justify-content-center" style="color: #FFFFFF"><span class="fa fa-location-arrow"></span></div>
-                                <div class="text" style="color: #FFFFFF"><span>Call us</span><span>(+01) 123 456 7890</span></div>
+                                <div class="text" style="color: #FFFFFF"><span>Call us</span><span>+32 (365) 61 22 44</span></div>
                             </div>
                         </div>
                         <div class="col-md-3 d-flex justify-content-end align-items-center">
@@ -79,7 +79,8 @@
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="background-image: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FE7VdJQX.jpg&f=1&nofb=1)">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="background-image: url(https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpapercave.com%2Fwp%2FE7VdJQX.jpg&f=1&nofb=1
+)">
         <div class="container">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +89,7 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a  th:href="@{/}" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a th:href="@{/about}" class="nav-link">About</a></li>
+                    <li class="nav-item"><a th:href="@{/leasedList}" class="nav-link">Leased Cars</a></li>
                     <li class="nav-item"><a th:href="@{/addEmployee}" class="nav-link">Add An Employee</a></li>
                     <li class="nav-item"><a th:href="@{/contactpage}" class="nav-link">Contact</a></li>
                 </ul>
@@ -97,85 +98,101 @@
     </nav>
 </div>
 
-<div th:fragment="footer" style="margin-top: 150px; background: rgba(0, 0, 0, 0.1);" >
+<div th:fragment="footer" style="margin-top: 100px; background: rgba(0, 0, 0, 0.9);">
     <section class="ftco-section ftco-no-pb"></section>
 
-<footer class="footer ftco-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-6 col-lg">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="logo"><a href="#">Autorepair<span>.</span></a></h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                        live the blind texts.</p>
-                    <p class="mb-0 d-flex" style="margin-left: 15px ">
-                        <a target="_blank" href="https://www.facebook.com/FleetLogistics-108496338139956" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                        <a target="_blank" href="https://twitter.com/tomtom64199155" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                        <a target="_blank" href="https://www.instagram.com/fleetlogistics.car/" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                    </p>
+    <footer class="footer ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 col-lg">
+                    <div class="ftco-footer-widget mb-4" style="color:white">
+                        <h2 class="ftco-heading-2">Our specializations</h2>
+                        <div class="block-23 mb-3">
+                            <ul style="color:white">
+                                <li><span class="text"> A heightened sense of awareness</span></li>
+                                <li style="color:white"><span class="text">  Pedestrian and stationary vehicle detection and preparation</span></a></li>
+                                <li style="color:white"><span class="text">Rear collision detection and preparation</span></a></li>
+                                <li style="color:white"><span class="text">Adaptive cruise assist</span></a></li>
+                                <li style="color:white"><span class="text">Active lane assist</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg">
-                <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Brands</h2>
-                    <ul class="list-unstyled">
-                        <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Audi</a></li>
-                        <li><a target="_blank" href="https://nl.skoda.be/"><span class="fa fa-check mr-3"></span>Skoda</a></li>
-                        <li><a target="_blank" href="https://www.volkswagen.be/nl.html"><span class="fa fa-check mr-3"></span>Volkswagen</a></li>
-                        <li><a target="_blank" href="https://www.seat.be/nl/home.html"><span class="fa fa-check mr-3"></span>Seat</a></li>
-                        <li><a target="_blank" href="https://www.bmw.be/nl/index.html"><span class="fa fa-check mr-3"></span>BMW</a></li>
-                        <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Mercedes</a></li>
-
-                    </ul>
-
-                </div>
-            </div>
-            <div class="col-md-6 col-lg">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Contact information</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon fa fa-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span>
-                            </li>
-                            <li><a href="#"><span class="icon fa fa-phone"></span><span
-                                    class="text">+2 392 3929 210</span></a></li>
-                            <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a>
-                            </li>
+                <div class="col-md-6 col-lg" style="color:white">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2"style="color: white">Brands</h2>
+                        <ul class="list-unstyled">
+                            <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Audi</a></li>
+                            <li><a target="_blank" href="https://nl-be.skoda-auto.com/"><span class="fa fa-check mr-3" ></span>Skoda</a></li>
+                            <li><a target="_blank" href="https://www.vw.com/en.html"><span class="fa fa-check mr-3"></span>Volkswagen</a></li>
+                            <li><a target="_blank" href="https://www.seat.be/nl/home.html"><span class="fa fa-check mr-3"></span>Seat</a></li>
+                            <li><a target="_blank" href="https://www.bmw.be/nl/index.html"><span class="fa fa-check mr-3"></span>BMW</a></li>
+                            <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Mercedes</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Business Hours</h2>
-                    <div class="opening-hours">
-                        <h4>Opening Days:</h4>
-                        <p class="pl-3">
-                            <span>Monday – Friday : 9am to 20 pm</span>
-                            <span>Saturday : 9am to 17 pm</span>
-                        </p>
-                        <h4>Vacations:</h4>
-                        <p class="pl-3">
-                            <span>All Sunday Days</span>
-                            <span>All Official Holidays</span>
-                        </p>
+                <div class="col-md-6 col-lg">
+                    <div class="ftco-footer-widget mb-4" style="color:white">
+                        <h2 class="ftco-heading-2">Contact information</h2>
+                        <div class="block-23 mb-3">
+                            <ul style="color:white">
+                                <li><span class="icon fa fa-map-marker"></span><span class="text"> Prins Boudewijnlaan 26, 2550 Kontich Belgium</span>
+                                </li>
+                                <li style="color:white"><a href="#"><span class="icon fa fa-phone"></span><span class="text"> +32 (365) 61 22 44</span></a></li>
+                                <li style="color:white"><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text"> info@fleetlogistics.com</span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2" style="color:white">Business Hours</h2>
+                        <div class="opening-hours">
+                            <h4 style="color:white">Opening Days:</h4>
+                            <p class="pl-3" style="color:white">
+                                <span>Monday – Friday : 9am to 20 pm</span>
+                                <span>Saturday : 9am to 17 pm</span>
+                            </p>
+                            <h4 style="color:white">Vacations:</h4>
+                            <p class="pl-3">
+                                <span style="color:white">All Sunday Days</span>
+                                <span style="color:white">All Official Holidays</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg">
+                    <div class="ftco-footer-widget mb-4" style="color:white">
+                        <h2 class="ftco-heading-2">Contact information</h2>
+                        <div class="block-23 mb-3">
+                            <form action="mailto:omniumsniper@gmail.com"
+                                  method="POST"
+                                  enctype="multipart/form-data"
+                                  name="EmailForm">
+                                Name:<br>
+                                <input type="text" size="19" name="Contact-Name"><br><br>
+                                Email:<br>
+                                <input type="email" name="Contact-Email"><br><br>
+                                Message:<br>
+                                <textarea name="Contact-Message" rows="6″ cols="20″></textarea><br><br>
+                                <button type="submit" value="Submit">Send</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                    All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                    <a href="https://github.com/Tomalicious/RDCar" target="_blank">Tom &amp; Renzo</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p style="color:white"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                        All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by
+                        <a href="https://github.com/Tomalicious/RDCar" target="_blank" style="color:rosybrown">Tom &amp; Renzo</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-
+    </footer>
     <div id="ftco-loader" class="show fullscreen">
         <svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
@@ -183,7 +200,6 @@
                     stroke="#F96D00"/>
         </svg>
     </div>
-
 </div>
 
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Slf4j
@@ -118,5 +119,38 @@ public class CarService {
 
     public void newLease(LeasedCar newLease) {
         carRepository.newLease(newLease);
+    }
+
+    public List<LeasedCar> getLeased() {
+        return carRepository.getLeased();
+    }
+
+    public LeasedCar getLeasedById(Long leaseId) {
+        return carRepository.getLeasedById(leaseId);
+    }
+
+    public void updateLease(LeasedCar newLease) {
+        carRepository.updateLease(newLease);
+    }
+
+    public void deleteLease(Long leaseId) {
+        carRepository.deleteLease(leaseId);
+    }
+
+    public LeasedCar getLeasedByEmployeeId(Long id) {
+        return carRepository.getLeasedByEmployeeId(id);
+
+    }
+
+    public List<LeasedCar> getLeasedAssigned() {
+        List<LeasedCar> leasedCars = carRepository.getLeased();
+        List<LeasedCar> filteredLease = leasedCars.stream().filter(leasedCar -> leasedCar.getEmployee() != null).collect(Collectors.toList());
+        return filteredLease;
+    }
+
+    public List<LeasedCar> getLeasedNotAssigned() {
+        List<LeasedCar> leasedCars = carRepository.getLeased();
+        List<LeasedCar> filteredLease = leasedCars.stream().filter(leasedCar -> leasedCar.getEmployee() == null).collect(Collectors.toList());
+        return filteredLease;
     }
 }

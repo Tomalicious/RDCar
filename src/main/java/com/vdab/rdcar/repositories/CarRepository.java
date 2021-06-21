@@ -39,4 +39,30 @@ public class CarRepository {
     public void newLease(LeasedCar newLease) {
             entityManager.persist(newLease);
         }
+
+    public List<LeasedCar> getLeased() {
+        return entityManager.createQuery("select l from LeasedCar l", LeasedCar.class).getResultList();
+    }
+
+    public LeasedCar getLeasedById(Long leaseId) {
+        TypedQuery<LeasedCar> query = entityManager.createQuery("select l from LeasedCar l where l.id = :id" , LeasedCar.class);
+        query.setParameter("id" , leaseId);
+        return query.getSingleResult();
+    }
+
+    @Transactional
+    public void updateLease(LeasedCar newLease) {
+        entityManager.merge(newLease);
+    }
+
+    public void deleteLease(Long leaseId) {
+        entityManager.remove(getLeasedById(leaseId));
+    }
+
+
+    public LeasedCar getLeasedByEmployeeId(Long id) {
+        TypedQuery<LeasedCar> query = entityManager.createQuery("select l from LeasedCar l where l.employee.id = :id" , LeasedCar.class);
+        query.setParameter("id" , id);
+        return query.getSingleResult();
+    }
 }
