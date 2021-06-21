@@ -73,7 +73,7 @@ public class CarService {
         return functionLevels;
     }
 
-    @Scheduled(cron = "0 0/1 * * * *")
+    @Scheduled(cron = "0 0 12 1/1 * ?")
     public void notifyEmployee() {
         System.out.println("notify");
         List<Employee> checkMileage = employeeService.getEmployees();
@@ -104,7 +104,7 @@ public class CarService {
         }
     }
 
-    @Scheduled(cron = "0 0 12 1/1 * ?")
+    @Scheduled(cron = "0 0/1 * * * *")
     public void incrementMileage() {
         List<Employee> employeeList = employeeService.getEmployees();
         for (Employee e : employeeList) {
