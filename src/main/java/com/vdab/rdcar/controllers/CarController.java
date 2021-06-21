@@ -47,7 +47,6 @@ public class CarController {
     public String addCurrentCar( @PathVariable("id") Long id ,@ModelAttribute Employee newEmployee) {
         Employee employee = employeeService.findById(id);
         employee.setCurrentCar(newEmployee.getCurrentCar());
-//        employee.setCurrentCar(newCar);
         employeeService.updateEmployee(employee);
         return "redirect:/";
     }
@@ -74,6 +73,8 @@ public class CarController {
             employee.setAmountOfMaintenances(0);
             employee.setCurrentCarMileage("0");
             employeeService.updateEmployee(employee);
+
+
             return "redirect:/";
         }
     }

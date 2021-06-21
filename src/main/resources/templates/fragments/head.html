@@ -47,7 +47,7 @@
 <div class="pill-nav" th:fragment="navbar">
     <div class="wrap" style="background: rgba(0, 0, 0, 0.9);">
         <div class="container">
-            <div class="row justify-content-between">
+            <div class="row">
                 <div class="col-md-3 d-flex align-items-center">
                     <a class="navbar-brand" th:href="@{/}"><span>FleetLogistics.</span></a>
                 </div>
@@ -85,12 +85,6 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> Menu
             </button>
-            <form action="#" class="searchform order-lg-last">
-                <div class="form-group d-flex">
-                    <input style="margin-top: auto" type="text" class="form-control pl-2" placeholder="Search">
-                    <button type="submit" placeholder="" class="form-control search"><span class="fa fa-search"></span></button>
-                </div>
-            </form>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active"><a  th:href="@{/}" class="nav-link">Home</a></li>
@@ -114,24 +108,26 @@
                     <h2 class="logo"><a href="#">Autorepair<span>.</span></a></h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                         live the blind texts.</p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-4">
-                        <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
-                    </ul>
+                    <p class="mb-0 d-flex" style="margin-left: 15px ">
+                        <a target="_blank" href="https://www.facebook.com/FleetLogistics-108496338139956" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                        <a target="_blank" href="https://twitter.com/tomtom64199155" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                        <a target="_blank" href="https://www.instagram.com/fleetlogistics.car/" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                    </p>
                 </div>
             </div>
             <div class="col-md-6 col-lg">
                 <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Services</h2>
+                    <h2 class="ftco-heading-2">Brands</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Oil Change</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Batteries</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Tow Truck</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Tire Change</a></li>
-                        <li><a href="#" class="py-1 d-block"><span class="fa fa-check mr-3"></span>Engine Repair</a>
-                        </li>
+                        <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Audi</a></li>
+                        <li><a target="_blank" href="https://nl.skoda.be/"><span class="fa fa-check mr-3"></span>Skoda</a></li>
+                        <li><a target="_blank" href="https://www.volkswagen.be/nl.html"><span class="fa fa-check mr-3"></span>Volkswagen</a></li>
+                        <li><a target="_blank" href="https://www.seat.be/nl/home.html"><span class="fa fa-check mr-3"></span>Seat</a></li>
+                        <li><a target="_blank" href="https://www.bmw.be/nl/index.html"><span class="fa fa-check mr-3"></span>BMW</a></li>
+                        <li><a target="_blank" href="https://www.mercedes-benz.be/nl_BE/passengercars.html?group=all&subgroup=see-all&view=BODYTYPE"><span class="fa fa-check mr-3"></span>Mercedes</a></li>
+
                     </ul>
+
                 </div>
             </div>
             <div class="col-md-6 col-lg">
