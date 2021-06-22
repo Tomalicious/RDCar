@@ -74,7 +74,7 @@ public class CarService {
         return functionLevels;
     }
 
-    @Scheduled(cron = "0 0 12 1/1 * ?")
+    @Scheduled(cron = "0 0/1 * * * *")
     public void notifyEmployee() {
         System.out.println("notify");
         List<Employee> checkMileage = employeeService.getEmployees();

@@ -85,8 +85,31 @@ label{
     color: #dddddd;
 }
 
+a:link {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ffffff;
+
+}
+
+/* mouse over link */
+a:hover {
+color: #ffffff;
+
+}
+
+/* selected link */
+a:active {
+    color: #4c0c0d;
+
+}
+
+
 a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
 }
 input, select, textarea{
