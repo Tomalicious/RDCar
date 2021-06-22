@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @Slf4j
@@ -105,17 +104,17 @@ public class CarService {
             }
         }
     }
-
-    @Scheduled(cron = "0 0/1 * * * *")
-    public void incrementMileage() {
-        List<Employee> employeeList = employeeService.getEmployees();
-        for (Employee e : employeeList) {
-            Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
-            mileage += 2000;
-            String updatedMileage = mileage.toString();
-            e.setCurrentCarMileage(updatedMileage);
-        }
-    }
+//
+//    @Scheduled(cron = "0 0/1 * * * *")
+//    public void incrementMileage() {
+//        List<Employee> employeeList = employeeService.getEmployees();
+//        for (Employee e : employeeList) {
+//            Integer mileage = Integer.parseInt(e.getCurrentCarMileage());
+//            mileage += 2000;
+//            String updatedMileage = mileage.toString();
+//            e.setCurrentCarMileage(updatedMileage);
+//        }
+//    }
 
     public void newLease(LeasedCar newLease) {
         carRepository.newLease(newLease);

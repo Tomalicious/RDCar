@@ -1,8 +1,7 @@
 package com.vdab.rdcar.controllers;
-import com.vdab.rdcar.domain.Car;
-import com.vdab.rdcar.domain.Employee;
-import com.vdab.rdcar.domain.FunctionLevels;
-import com.vdab.rdcar.domain.LeasedCar;
+import com.vdab.rdcar.domain.*;
+import com.vdab.rdcar.repositories.AppointmentRepository;
+import com.vdab.rdcar.services.AppointmentService;
 import com.vdab.rdcar.services.CarService;
 import com.vdab.rdcar.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,17 +23,19 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private AppointmentService appointmentService;
+
     @GetMapping(value = "/")
     public String showEmployeePage(Model model) {
         model.addAttribute("allEmployees", employeeService.getEmployees());
+        model.addAttribute("newAppointment", new Appointment());
         return "index";
     }
 
     @GetMapping(value= "/removeEmployee/{id}")
     public String deleteAnEmployee(@PathVariable("id") Long id) {
-            LeasedCar lease = carService.getLeasedByEmployeeId(id);
-            lease.setEmployee(null);
-            carService.updateLease(lease);
+            carService.deleteLease(carService.getLeasedByEmployeeId(id).getId());
             employeeService.removeById(id);
 
         return "redirect:/";
@@ -53,6 +54,16 @@ public class EmployeeController {
         employeeService.updateEmployee(newEmployee);
         return "redirect:/";
     }
+
+
+    @PostMapping(value = "/makeAppointment")
+    public String editAppointment(@ModelAttribute Appointment appointment){
+        appointmentService.makeAppointment(appointment);
+        return "redirect:/";
+    }
+
+
+
 
     @GetMapping(value = "/addEmployee")
     public String showAddPage(Model model){

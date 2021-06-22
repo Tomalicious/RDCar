@@ -8,28 +8,27 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
-@Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class LeasedCar {
-
+@NoArgsConstructor
+@Builder
+@Data
+public class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Car leasedCar;
+    private String carBrand;
+
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date leaseDate;
+    private Date appointmentDate;
 
-    @ManyToOne
-    Employee employee;
+    private String message;
+
+    private String name;
 }

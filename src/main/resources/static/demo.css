@@ -85,7 +85,11 @@ label{
     color: #dddddd;
 }
 
-a{
-    text-decoration: none ;
-    color: #dddddd;
+a {
+    color: white;
+    text-decoration: none;
 }
+input, select, textarea{
+    color: black;
+}
+
