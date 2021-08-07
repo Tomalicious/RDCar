@@ -61,11 +61,10 @@ public class CarRepository {
     }
 
 
-    public LeasedCar getLeasedByEmployeeId(Long id) {
-        TypedQuery<LeasedCar> query = entityManager.createQuery("select l from LeasedCar l where l.employee.id = :id" , LeasedCar.class);
-        query.setParameter("id" , id);
-        if(query.setMaxResults(1).getSingleResult() != null){
-        return query.setMaxResults(1).getSingleResult();
+    public List<LeasedCar> getLeasedByEmployeeId(Long id) {
+        List<LeasedCar> leases = entityManager.createQuery("select l from LeasedCar l " , LeasedCar.class).getResultList();
+        if(leases != null){
+        return leases;
         }else{
             return null;
         }

@@ -56,7 +56,7 @@
                 <th data-field="fuel" style="text-align:center">Fuel</th>
                 <th data-field="listPrice" style="text-align:center">List Price</th>
                 <th data-field="leaseDate" style="text-align:center">Lease date</th>
-                <th></th>
+                <th data-field="mileage" style="text-align:center"></th>
                 <th data-field="editLease" style="text-align:center">Edit Lease</th>
 
             </tr>
@@ -67,7 +67,7 @@
                 <td th:text="${car.getLeasedCar().getFuel()}" style="text-align:center"></td>
                 <td th:text="${car.getLeasedCar().getListPrice()}" style="text-align:center"></td>
                 <td th:text="${car.getLeaseDate()}" style="text-align:center"></td>
-                <td ></td>
+                <td></td>
                 <td style="text-align:center">
                     <a th:href="@{/editLease/{carId}/{leaseId} (carId = ${car.getLeasedCar().getId} , leaseId = ${car.getId})}">
                         <span class="material-icons">edit</span></a>

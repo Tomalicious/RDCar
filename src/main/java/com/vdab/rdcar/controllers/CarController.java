@@ -85,10 +85,10 @@ public class CarController {
             if (currentMileage >= maxKm) {
                 Long leaseId = carService.getLeasedByEmployeeId(employee.getId()).getId();
                 carService.deleteLease(leaseId);
-            } else {
+            }else if(currentMileage > maxKm) {
                 LeasedCar lease = carService.getLeasedByEmployeeId(employee.getId());
-                carService.updateLease(lease);
                 lease.setEmployee(null);
+                carService.updateLease(lease);
             }
             return "redirect:/";
         }
@@ -133,7 +133,7 @@ public class CarController {
             LeasedCar lease = carService.getLeasedByEmployeeId(employee.getId());
             lease.setEmployee(null);
             carService.updateLease(lease);
-        } else {
+        } else if(currentMileage > maxKm){
             Long leaseId = carService.getLeasedByEmployeeId(employee.getId()).getId();
             carService.deleteLease(leaseId);
         }

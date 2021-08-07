@@ -32,4 +32,6 @@ public class LeasedCar {
 
     @ManyToOne
     Employee employee;
+
+    private String mileage;
 }

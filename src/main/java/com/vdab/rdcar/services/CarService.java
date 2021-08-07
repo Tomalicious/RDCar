@@ -137,8 +137,13 @@ public class CarService {
     }
 
     public LeasedCar getLeasedByEmployeeId(Long id) {
-        return carRepository.getLeasedByEmployeeId(id);
-
+         List<LeasedCar> leases = carRepository.getLeasedByEmployeeId(id);
+         if(leases == null) {
+             return null;
+         }else{
+             List<LeasedCar> noNull = leases.stream().filter(leasedCar -> leasedCar.getEmployee() != null).collect(Collectors.toList());
+             return noNull.stream().filter(leasedCar -> leasedCar.getEmployee().getId() == id).findFirst().get();
+         }
     }
 
     public List<LeasedCar> getLeasedAssigned() {
