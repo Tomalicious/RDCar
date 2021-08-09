@@ -79,8 +79,10 @@ public class EmployeeController {
     }
 
     @PostMapping(value= "/add")
-    public String addedEmployee(@ModelAttribute Employee newEmployee){
+    public String addedEmployee(@ModelAttribute Employee newEmployee , Model model){
         employeeService.addEmployee(newEmployee);
+        model.addAttribute("allEmployees", employeeService.getEmployees());
+        model.addAttribute("newAppointment", new Appointment());
         return "index";
     }
 }
