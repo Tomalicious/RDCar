@@ -27,7 +27,7 @@ class CarServiceTest {
 
 
     @Test
-    void getCarsAvailableIfEmpIsA() {
+    void getCarsAvailableIfEmpIsFunctionLevelA() {
         Employee employee = Employee.builder().id(1L).functionLevel(FunctionLevels.A).build();
         List<FunctionLevels> carsAvailable = carService.getFunctionLevelsBetweenBounds(employee);
         Assertions.assertFalse(carsAvailable.isEmpty());
