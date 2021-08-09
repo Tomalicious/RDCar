@@ -58,6 +58,11 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jboss.web</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.1.0.GA</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -104,5 +109,14 @@
         </plugins>
     </build>
 
-    <distributionManagement></distributionManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://github.com/Tomalicious/RDCar</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://github.com/Tomalicious/RDCar</url>
+        </repository>
+    </distributionManagement>
 </project>
