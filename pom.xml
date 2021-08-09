@@ -108,15 +108,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://github.com/Tomalicious/RDCar</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://github.com/Tomalicious/RDCar</url>
-        </repository>
-    </distributionManagement>
 </project>
