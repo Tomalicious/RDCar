@@ -77,4 +77,10 @@ public class EmployeeController {
         model.addAttribute("functionLevels", FunctionLevels.values());
         return "addEmployee";
     }
+
+    @PostMapping(value= "/add")
+    public String addedEmployee(@ModelAttribute Employee newEmployee){
+        employeeService.addEmployee(newEmployee);
+        return "index";
+    }
 }
